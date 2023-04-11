@@ -143,7 +143,7 @@ func get_key() string {
 	var key string
 	err = json.NewDecoder(file).Decode(&key)
 	if err != nil {
-		panic(err)
+		return ""
 	}
 	return key
 }
