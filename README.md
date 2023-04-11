@@ -1,5 +1,5 @@
 # dunno
-AI powered command line
+AI powered command line with natural language
 
 ## Installation
 `go install github.com/gptlang/dunno@latest`
