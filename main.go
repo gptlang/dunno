@@ -143,7 +143,7 @@ func get_key() string {
 	var key string
 	err = json.NewDecoder(file).Decode(&key)
 	if err != nil {
-		return ""
+		panic(err)
 	}
 	return key
 }
@@ -163,29 +163,30 @@ func set_key(key string) {
 }
 
 func get_history() []message {
+	base_message := []message{
+		{
+			Content: SYSTEM_PROMPT,
+			Role:    "system",
+		},
+		{
+			Content: "List files",
+			Role:    "user",
+		},
+		{
+			Content: "ls",
+			Role:    "assistant",
+		},
+		{
+			Content: "list tcp network connections",
+			Role:    "user",
+		},
+		{
+			Content: "netstat -atn | grep 'tcp'",
+			Role:    "assistant",
+		},
+	}
 	if mkdir() {
-		return []message{
-			{
-				Content: SYSTEM_PROMPT,
-				Role:    "system",
-			},
-			{
-				Content: "List files",
-				Role:    "user",
-			},
-			{
-				Content: "ls",
-				Role:    "assistant",
-			},
-			{
-				Content: "list tcp network connections",
-				Role:    "user",
-			},
-			{
-				Content: "netstat -atn | grep 'tcp'",
-				Role:    "assistant",
-			},
-		}
+		return base_message
 	}
 	// Read history file
 	file, err := os.Open(HOME_DIR + "/.config/dunno/history.json")
@@ -196,7 +197,7 @@ func get_history() []message {
 	var history []message
 	err = json.NewDecoder(file).Decode(&history)
 	if err != nil {
-		panic(err)
+		return base_message
 	}
 	return history
 }
