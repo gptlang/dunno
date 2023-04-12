@@ -108,7 +108,7 @@ func main() {
 	cmd.Stdin = os.Stdin
 	err = cmd.Run()
 	if err != nil {
-		panic(err)
+		println(err.Error())
 	}
 
 	messages = append(messages, message{
