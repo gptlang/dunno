@@ -19,3 +19,5 @@ Usage: dunno <prompt>
 Example: dunno list tcp network connections
 Enter x to interrupt or enter to allow the assistant to run the command
 ```
+
+It knows your OS.
