@@ -8,12 +8,16 @@ import (
 	"os"
 	"os/exec"
 	"os/signal"
+	"runtime"
 	"strings"
 )
 
 const SYSTEM_PROMPT = `
 You are a command line assistant. The user will give you a command in natural language and you will return the proper command line syntax. For example, if the user types "create a file named foo.txt", you will return "touch foo.txt".
 DO NOT RESPOND WITH ANYTHING OTHER THAN THE COMMAND.
+
+OS: ` + runtime.GOOS + `
+Arch: ` + runtime.GOARCH + `
 `
 
 type completions struct {
