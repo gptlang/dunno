@@ -97,6 +97,11 @@ func main() {
 		panic(err)
 	}
 	command := response["choices"].([]interface{})[0].(map[string]interface{})["message"].(map[string]interface{})["content"].(string)
+	// Look for "```"
+	if strings.Contains(command, "```") {
+		// Set command to the text between the first and second "```"
+		command = strings.Split(strings.Split(command, "```")[1], "```")[0]
+	}
 	println(command)
 
 	// Get user input
