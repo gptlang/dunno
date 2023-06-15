@@ -72,6 +72,7 @@ func main() {
 		panic(err)
 	}
 	req.Header.Add("Content-Type", "application/json")
+	req.Header.Add("Authorization", "Bearer BetterChatGPT")
 	if os.Getenv("OPENAI_KEY") != "" {
 		req.Header.Add("Authorization", "Bearer "+os.Getenv("OPENAI_KEY"))
 		set_key(os.Getenv("OPENAI_KEY"))
