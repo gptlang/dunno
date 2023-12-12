@@ -8,7 +8,7 @@ AI powered command line with natural language
 - [Go](https://go.dev/)
 - `~/go/bin` in `$PATH`
 
-### Authentication (not required)
+### Authentication (required)
 You only need to set it once. It saves this key to config file. To change key, just do this again before running it.
 `export OPENAI_KEY="sk-..."`
 
