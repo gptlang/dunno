@@ -79,10 +79,7 @@ func main() {
 	} else if get_key() != "" {
 		req.Header.Add("Authorization", "Bearer "+get_key())
 	} else {
-		req, err = http.NewRequest("{POST", "https://free.churchless.tech/v1/chat/completions", bytes.NewBuffer(body_json))
-		if err != nil {
-			panic(err)
-		}
+		panic("API key required!")
 	}
 	// Send the request
 	client := &http.Client{}
